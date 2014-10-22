@@ -9,11 +9,14 @@ namespace RavenHQClient.Model
 {  
     public partial class ShoppingCartModel
     {
+        public string Id { get; set;}
+        public decimal GrandTotal { get { return Items.Sum(x => x.SubTotal); } }        
+        public IList<ShoppingCartItemModel> Items { get; set; }
+        public ShoppingCartCustomer Customer { get; set; }
         public ShoppingCartModel()
         {
             Items = new List<ShoppingCartItemModel>();
-        }
-        public IList<ShoppingCartItemModel> Items { get; set; }
+        }       
 
         public partial class ShoppingCartItemModel 
         {

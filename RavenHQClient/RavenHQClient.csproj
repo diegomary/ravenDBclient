@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="media\PictureModel.cs" />
     <Compile Include="Model\ShoppingCart.cs" />
+    <Compile Include="Model\ShoppingCartCustomer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Irepository.cs" />

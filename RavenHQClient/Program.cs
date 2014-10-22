@@ -15,6 +15,9 @@ namespace RavenHQClient
         static void Main(string[] args)
         {
             ShoppingCartModel myCart = new ShoppingCartModel();
+            String guid = System.Guid.NewGuid().ToString();
+            myCart.Id = guid;
+            myCart.Customer = new ShoppingCartCustomer() { Id = "123", Name = "Diego Aldo Burlando" };
             ShoppingCartModel.ShoppingCartItemModel firstItem = new ShoppingCartModel.ShoppingCartItemModel();
             firstItem.Picture = new PictureModel { ImageUrl = "http://www.dmm888.com/imageitem.jpg", Title = "The image of the Item", AlternateText = "None", FullSizeImageUrl = "http://www.dmm888.com/imageitemfullsize.jpg" };
             firstItem.ProductId = 1345;
@@ -26,12 +29,17 @@ namespace RavenHQClient
             firstItem.Id = firstItem.Sku;
 
             myCart.Items.Add(firstItem);
+            myCart.Items.Add(firstItem);
+            myCart.Items.Add(firstItem);
+            myCart.Items.Add(firstItem);
+
+
 
 
             IRepository<ShoppingCartModel> iRepo = new Repository<ShoppingCartModel>();
             iRepo.Store(myCart, "DiegoDB");
 
-
+            ShoppingCartModel readone = iRepo.Load("DIEGO", "DiegoDB");
 
             //List<ShoppingCartModel> lst1 = iRepo.LoadAll("DiegoDB");
             //BlogPost ggg = iRepo.Load("5", "DiegoDB");
