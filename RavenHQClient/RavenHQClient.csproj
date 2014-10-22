@@ -48,8 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BlogComment.cs" />
-    <Compile Include="Model\BlogPost.cs" />
+    <Compile Include="media\PictureModel.cs" />
+    <Compile Include="Model\ShoppingCart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Irepository.cs" />

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using RavenHQClient.Repository;
 using System.Linq;
+using RavenHQClient.media;
 
 namespace RavenHQClient
 { 
@@ -13,33 +14,27 @@ namespace RavenHQClient
     {
         static void Main(string[] args)
         {
-            List<BlogPost> lst = new List<BlogPost>();
-            for (int i = 0; i < 10; i++)
-            {
-                BlogPost post = new BlogPost()
-                {
-                    Id = i.ToString(),
-                    Title = "Hello RavenDB",
-                    Category = "RavenDB",
-                    Content = "This is a blog about RavenDB",
-                    Comments = new BlogComment[]
-                                    {
-                                        new BlogComment() {Title = "Unrealistic", Content = "This example is unrealistic"},
-                                        new BlogComment() {Title = "Nice", Content = "This example is nice"} 
-                                    }
-                };
-                lst.Add(post);
-            }
+            ShoppingCartModel myCart = new ShoppingCartModel();
+            ShoppingCartModel.ShoppingCartItemModel firstItem = new ShoppingCartModel.ShoppingCartItemModel();
+            firstItem.Picture = new PictureModel { ImageUrl = "http://www.dmm888.com/imageitem.jpg", Title = "The image of the Item", AlternateText = "None", FullSizeImageUrl = "http://www.dmm888.com/imageitemfullsize.jpg" };
+            firstItem.ProductId = 1345;
+            firstItem.ProductName = "Laptop of great power and speed";
+            firstItem.Quantity = 4;
+            firstItem.UnitPrice = 1290.45M;
+            firstItem.SubTotal = firstItem.Quantity * firstItem.UnitPrice;
+            firstItem.Sku = "R0UIT123";
+            firstItem.Id = firstItem.Sku;
+
+            myCart.Items.Add(firstItem);
+
+
+            IRepository<ShoppingCartModel> iRepo = new Repository<ShoppingCartModel>();
+            iRepo.Store(myCart, "DiegoDB");
 
 
 
-            IRepository<BlogPost> iRepo = new Repository<BlogPost>();
-            iRepo.Store(lst,"DiegoDB");
-
-
-
-            List<BlogPost> lst1 = iRepo.LoadAll("DiegoDB");
-            BlogPost ggg = iRepo.Load("5", "DiegoDB");
+            //List<ShoppingCartModel> lst1 = iRepo.LoadAll("DiegoDB");
+            //BlogPost ggg = iRepo.Load("5", "DiegoDB");
           
           
            
