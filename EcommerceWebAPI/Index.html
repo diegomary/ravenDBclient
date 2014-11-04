@@ -58,18 +58,23 @@
                     alert(data);
                 }).fail(function () { alert('error') });
             });
-        });        
+            $("#logout").click(function () {
+                sessionStorage.removeItem('accessToken')
+                alert('Logged Out')
+            });
+
+        });
 
     </script>
 
 </head>
 <body>
-
-    <button value="Authenticate" id="btnoauth">Authenticate</button>
+    <button value="Authenticate" id="btnoauth">Log In</button>
     <br />
     <button value="Call Api" id="btncallapi">Call API</button>
     <br />
     <button value="Register" id="register">Register</button>
-
+    <br />
+    <button value="LogOut" id="logout">Log Out</button>
 </body>
 </html>
