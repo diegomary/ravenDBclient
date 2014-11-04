@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //the following code is good to register a new user
+            $("#register").click(function () {
+                var data = {
+                    Email: 'maria@dmm888.com',
+                    Password: 'Atreius@62',
+                    ConfirmPassword: 'Atreius@62'
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: 'api/Account/Register',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data)
+                }).done(function (data) {
+                    alert("Registration process successful")
+                }).fail(function () { alert('error') });
+            });
+            // the following code is good to login
+            $("#btnoauth").click(function () {
+                var loginData = {
+                    grant_type: 'password',
+                    username: 'diego@dmm888.com',
+                    password: 'Atreius@62'
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/Token',
+                    data: loginData
+                }).done(function (data) {
+                    alert(data.userName);
+                    // Cache the access token in session storage.
+                    sessionStorage.setItem('accessToken', data.access_token);
+                }).fail(function () { alert('error') });
+            });
+            // the following code sends a request
+            $("#btncallapi").click(function () {                
+                var token = sessionStorage.getItem('accessToken');                
+                var headers = {};
+                if (token) {
+                    headers.Authorization = 'Bearer ' + token;
+                }
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/values',
+                    headers: headers
+                }).done(function (data) {
+                    alert(data);
+                }).fail(function () { alert('error') });
+            });
+        });        
+
+    </script>
+
+</head>
+<body>
+
+    <button value="Authenticate" id="btnoauth">Authenticate</button>
+    <br />
+    <button value="Call Api" id="btncallapi">Call API</button>
+    <br />
+    <button value="Register" id="register">Register</button>
+
+</body>
+</html>

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenHQClient", "RavenHQClient\RavenHQClient.csproj", "{AFD152F5-9F4B-4EE3-AA73-133A5AA5C826}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceWebAPI", "EcommerceWebAPI\EcommerceWebAPI.csproj", "{243B02EF-7172-47DE-8F41-78FA5D32E66F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AFD152F5-9F4B-4EE3-AA73-133A5AA5C826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD152F5-9F4B-4EE3-AA73-133A5AA5C826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD152F5-9F4B-4EE3-AA73-133A5AA5C826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{243B02EF-7172-47DE-8F41-78FA5D32E66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{243B02EF-7172-47DE-8F41-78FA5D32E66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{243B02EF-7172-47DE-8F41-78FA5D32E66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{243B02EF-7172-47DE-8F41-78FA5D32E66F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
